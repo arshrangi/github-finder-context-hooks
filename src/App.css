@@ -353,6 +353,8 @@ table th {
   width: 100%;
   opacity: 0.9;
   margin-bottom: 1rem;
+  background-color: #92cc41;
+  color: #fff;
 }
 
 .navbar ul {
