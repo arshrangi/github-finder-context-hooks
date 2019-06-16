@@ -12,7 +12,8 @@ class Search extends Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state.text);
+    this.props.searchUsers(this.state.text);
+    this.setState({ text: '' });
   };
   render() {
     return (
@@ -37,3 +38,7 @@ class Search extends Component {
 }
 
 export default Search;
+
+/* to make search functionality work, we need to push the value the user just 
+entered to the main app component so that everything remains centralized.
+*/
