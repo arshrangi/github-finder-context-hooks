@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Navbar from './components/layouts/Navbar';
 import Users from './components/users/Users';
+import Search from './components/users/Search';
 
 /* converted this functional component to class based one.
 function App() {
@@ -51,6 +52,7 @@ class App extends Component {
       <div className='App'>
         <Navbar />
         <div className='container'>
+          <Search />
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>
