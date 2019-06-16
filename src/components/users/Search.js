@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Search extends Component {
   state = {
@@ -31,6 +32,14 @@ class Search extends Component {
             value='Find'
             className='nes-btn is-warning btn-block'
           />
+          {this.props.showClear && (
+            <button
+              className='nes-btn is-error btn-block'
+              onClick={this.props.clearUsers}
+            >
+              Clear
+            </button>
+          )}
         </form>
       </div>
     );
@@ -38,6 +47,12 @@ class Search extends Component {
 }
 
 export default Search;
+
+Search.propTypes = {
+  searchUsers: PropTypes.func.isRequired,
+  clearUsers: PropTypes.func.isRequired,
+  showClear: PropTypes.bool.isRequired
+};
 
 /* to make search functionality work, we need to push the value the user just 
 entered to the main app component so that everything remains centralized.

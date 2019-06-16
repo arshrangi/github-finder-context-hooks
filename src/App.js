@@ -4,7 +4,6 @@ import './App.css';
 import Navbar from './components/layouts/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
-import PropTypes from 'prop-types';
 
 /* converted this functional component to class based one.
 function App() {
@@ -37,6 +36,7 @@ class App extends Component {
       .then(response => console.log(response.data));
   }*/
 
+  /* 
   async componentDidMount() {
     this.setState({ loading: true });
     const response = await axios.get(
@@ -47,6 +47,7 @@ class App extends Component {
 
     this.setState({ users: response.data, loading: false });
   }
+  */
 
   searchUsers = async text => {
     this.setState({ loading: true });
@@ -58,13 +59,20 @@ class App extends Component {
 
     this.setState({ users: response.data.items, loading: false });
   };
+  clearUsers = () => {
+    this.setState({ users: [], loading: false });
+  };
 
   render() {
     return (
       <div className='App'>
         <Navbar />
         <div className='container'>
-          <Search searchUsers={this.searchUsers} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            showClear={this.state.users.length > 0 ? true : false}
+          />
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>
@@ -73,7 +81,3 @@ class App extends Component {
 }
 
 export default App;
-
-App.propTypes = {
-  searchUsers: PropTypes.func.isRequired
-};
