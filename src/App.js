@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/layouts/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
+import Alert from './components/layouts/Alert';
 
 /* converted this functional component to class based one.
 function App() {
@@ -26,7 +27,8 @@ function App() {
 class App extends Component {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   };
 
   /* we are going to use async await syntax, so refactor this
@@ -59,8 +61,14 @@ class App extends Component {
 
     this.setState({ users: response.data.items, loading: false });
   };
+
   clearUsers = () => {
     this.setState({ users: [], loading: false });
+  };
+
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg: msg, type: type } });
+    setTimeout(() => this.setState({ alert: null }), 5000);
   };
 
   render() {
@@ -68,10 +76,12 @@ class App extends Component {
       <div className='App'>
         <Navbar />
         <div className='container'>
+          <Alert alert={this.state.alert} />
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
             showClear={this.state.users.length > 0 ? true : false}
+            setAlert={this.setAlert}
           />
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
