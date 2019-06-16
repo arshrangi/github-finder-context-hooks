@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /*converting this class based component to functional component*/
 
@@ -65,9 +66,9 @@ const UserItem = props => {
       />
       <h3 className='nes-text is-primary my-1'>{login}</h3>
       <div>
-        <a href={html_url} className='nes-btn is-success my-1'>
+        <Link to={`/user/${login}`} className='nes-btn is-success my-1'>
           More About me
-        </a>
+        </Link>
       </div>
     </div>
   );
