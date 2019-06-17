@@ -55,7 +55,7 @@ const UserItem = props => {
     We can do this destructing while starting this arrow function. as
     const USerItem = ({ user: {login, avatar_url, html_url }}) => {
   */
-  const { login, avatar_url, html_url } = props.user;
+  const { login, avatar_url } = props.user;
   return (
     <div className='card text-center' style={{ padding: '15px' }}>
       <img
