@@ -10,7 +10,6 @@ import {
   GET_REPOS,
   SET_LOADING
 } from '../types';
-import { tsPropertySignature } from '@babel/types';
 
 const GithubState = props => {
   const initialState = {
