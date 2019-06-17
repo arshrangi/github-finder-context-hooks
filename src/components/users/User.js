@@ -2,10 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../layouts/Spinner';
 import PropTypes from 'prop-types';
+import Repos from '../repos/Repos';
 
 class User extends Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
+    this.props.getUserRepos(this.props.match.params.login);
   }
   render() {
     const {
@@ -95,6 +97,7 @@ class User extends Component {
           </div>
           <div className='badge badge-light'>Public Gists: {public_gists}</div>
         </div>
+        <Repos repos={this.props.repos} />
       </Fragment>
     );
   }
@@ -105,5 +108,7 @@ export default User;
 User.propTypes = {
   loading: PropTypes.bool.isRequired,
   user: PropTypes.object.isRequired,
-  getUser: PropTypes.func.isRequired
+  getUser: PropTypes.func.isRequired,
+  getUserRepos: PropTypes.func.isRequired,
+  repos: PropTypes.array.isRequired
 };
